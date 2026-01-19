@@ -1,0 +1,92 @@
+graph TB
+    Start([Start Project]) --> Phase1[Phase 1: Requirements & Planning]
+    
+    Phase1 --> P1A[Define Features]
+    Phase1 --> P1B[Choose Tech Stack: Go]
+    Phase1 --> P1C[Set Success Criteria]
+    P1A --> Phase2
+    P1B --> Phase2
+    P1C --> Phase2
+    
+    Phase2[Phase 2: Design] --> P2A[Design Architecture]
+    Phase2 --> P2B[Define Components]
+    Phase2 --> P2C[Plan Data Flow]
+    P2A --> Phase3
+    P2B --> Phase3
+    P2C --> Phase3
+    
+    Phase3[Phase 3: Development] --> Sprint1[Sprint 1: Core DNS Server]
+    Sprint1 --> S1A[DNS Request Handling]
+    Sprint1 --> S1B[Upstream Forwarding]
+    S1A --> Sprint2
+    S1B --> Sprint2
+    
+    Sprint2[Sprint 2: Traffic Monitoring] --> S2A[Track Requests per IP]
+    Sprint2 --> S2B[Query History Storage]
+    S2A --> Sprint3
+    S2B --> Sprint3
+    
+    Sprint3[Sprint 3: DDoS Detection] --> S3A[High Rate Detection]
+    Sprint3 --> S3B[Repeated Query Detection]
+    Sprint3 --> S3C[Random Subdomain Detection]
+    Sprint3 --> S3D[Burst Detection]
+    S3A --> Sprint4
+    S3B --> Sprint4
+    S3C --> Sprint4
+    S3D --> Sprint4
+    
+    Sprint4[Sprint 4: Mitigation] --> S4A[IP Blocking Logic]
+    Sprint4 --> S4B[Rate Limiting]
+    Sprint4 --> S4C[Automatic Cleanup]
+    S4A --> Sprint5
+    S4B --> Sprint5
+    S4C --> Sprint5
+    
+    Sprint5[Sprint 5: Logging & Monitoring] --> S5A[Structured Logging]
+    Sprint5 --> S5B[Activity Tracking]
+    Sprint5 --> S5C[Mitigation Logs]
+    S5A --> Phase4
+    S5B --> Phase4
+    S5C --> Phase4
+    
+    Phase4[Phase 4: Testing] --> P4A[Unit Tests]
+    Phase4 --> P4B[Integration Tests]
+    Phase4 --> P4C[Attack Simulation]
+    Phase4 --> P4D[Performance Testing]
+    P4A --> Phase5
+    P4B --> Phase5
+    P4C --> Phase5
+    P4D --> Phase5
+    
+    Phase5[Phase 5: Documentation] --> P5A[README Creation]
+    Phase5 --> P5B[Quick Start Guide]
+    Phase5 --> P5C[Code Comments]
+    P5A --> Phase6
+    P5B --> Phase6
+    P5C --> Phase6
+    
+    Phase6[Phase 6: Deployment] --> P6A[Build Production Binary]
+    Phase6 --> P6B[System Service Setup]
+    Phase6 --> P6C[Security Hardening]
+    P6A --> Phase7
+    P6B --> Phase7
+    P6C --> Phase7
+    
+    Phase7[Phase 7: Maintenance] --> P7A[Monitor Logs]
+    Phase7 --> P7B[Update Attack Signatures]
+    Phase7 --> P7C[Performance Tuning]
+    P7A --> End
+    P7B --> End
+    P7C --> End
+    
+    End([Project Complete])
+    
+    style Start fill:#90EE90
+    style End fill:#FFB6C1
+    style Phase1 fill:#87CEEB
+    style Phase2 fill:#87CEEB
+    style Phase3 fill:#87CEEB
+    style Phase4 fill:#87CEEB
+    style Phase5 fill:#87CEEB
+    style Phase6 fill:#87CEEB
+    style Phase7 fill:#87CEEB
