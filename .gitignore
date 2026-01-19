@@ -13,8 +13,8 @@ dns-defense-server
 coverage.html
 coverage.out
 
-# Logs
-logs/*.log
+# Logs - IMPORTANT!
+logs/
 *.log
 
 # Go workspace
@@ -31,3 +31,6 @@ go.work.sum
 # OS
 .DS_Store
 Thumbs.db
+
+# Dependencies
+vendor/
