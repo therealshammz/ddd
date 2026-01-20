@@ -15,8 +15,11 @@ echo ""
 
 # Create necessary directories
 echo "Creating directories..."
-mkdir -p logs
-mkdir -p configs
+mkdir -p -m 0750 logs
+mkdir -p -m 0750 configs
+
+go mod verify
+
 echo "✓ Directories created"
 echo ""
 
