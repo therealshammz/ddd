@@ -22,13 +22,14 @@ A Go-based DNS server with built-in DDoS protection capabilities including traff
 
 ## Installation
 
-1. **Clone or extract the project:**
+1. **Clone the project:**
 ```bash
-cd dns-ddos-defense
+git clone https://github.com/therealshammz/ddd.git
 ```
 
 2. **Initialize and download dependencies:**
 ```bash
+cd ddd
 # The go.mod is already configured as 'ddd'
 go mod download
 go mod tidy
@@ -43,10 +44,8 @@ mkdir -p logs
 
 ```bash
 # Build the server
-go build -o dns-defense-server ./cmd/server
-
-# Or build with optimizations
-go build -ldflags="-s -w" -o dns-defense-server ./cmd/server
+make deps
+make build
 ```
 
 ## Running
@@ -55,6 +54,8 @@ go build -ldflags="-s -w" -o dns-defense-server ./cmd/server
 
 ```bash
 # Run with default settings (requires root for port 53)
+sudo make run
+# Or
 sudo ./dns-defense-server
 
 # Or run on non-privileged port
