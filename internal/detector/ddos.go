@@ -181,21 +181,27 @@ func (d *DDoSDetector) checkQueryBurst(queries []monitor.QueryInfo) bool {
 	return recentCount > 50
 }
 
-// looksRandom checks if a string looks randomly generated
+// Add entropy check alongside digit check
 func (d *DDoSDetector) looksRandom(s string) bool {
-	if len(s) < 8 {
-		return false
-	}
-
-	digitCount := 0
-	for _, c := range s {
-		if c >= '0' && c <= '9' {
-			digitCount++
-		}
-	}
-
-	// If more than 50% digits, likely random
-	return float64(digitCount)/float64(len(s)) > 0.5
+    if len(s) < 8 {
+        return false
+    }
+    
+    // Check for high digit percentage (current logic)
+    digitCount := 0
+    uniqueChars := make(map[rune]bool)
+    for _, c := range s {
+        uniqueChars[c] = true
+        if c >= '0' && c <= '9' {
+            digitCount++
+        }
+    }
+    
+    // Require both:  high digits AND high entropy
+    highDigitRatio := float64(digitCount)/float64(len(s)) > 0.4
+    highEntropy := float64(len(uniqueChars))/float64(len(s)) > 0.6
+    
+    return highDigitRatio && highEntropy
 }
 
 // calculateSeverity calculates attack severity based on request count
