@@ -139,9 +139,9 @@ func (s *Server) forwardRequest(w dns.ResponseWriter, r *dns.Msg) {
 	}
 
 	// Send response back to client
-	err = w.WriteMsg(resp)
 	if err != nil {
-		s.log.Errorw("Error writing response", "error", err)
+    s.log. Errorw("Error writing response", "error", err)
+    return  // Exit to prevent sending multiple responses
 	}
 }
 
