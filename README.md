@@ -30,22 +30,8 @@ git clone https://github.com/therealshammz/ddd.git
 2. **Initialize and download dependencies:**
 ```bash
 cd ddd
-# The go.mod is already configured as 'ddd'
-go mod download
-go mod tidy
-```
-
-3. **Create logs directory:**
-```bash
-mkdir -p logs
-```
-
-## Building
-
-```bash
-# Build the server
-make deps
-make build
+ # Use install script
+./setup.sh
 ```
 
 ## Running
@@ -54,8 +40,6 @@ make build
 
 ```bash
 # Run with default settings (requires root for port 53)
-sudo make run
-# Or
 sudo ./dns-defense-server
 
 # Or run on non-privileged port
@@ -215,24 +199,37 @@ Logs are in JSON format for easy parsing:
 ## Project Structure
 
 ```
-dns-ddos-defense/
-├── cmd/
-│   └── server/
-│       └── main.go              # Entry point
-├── internal/
-│   ├── dns/
-│   │   └── server.go            # DNS server logic
-│   ├── monitor/
-│   │   └── traffic.go           # Traffic monitoring
-│   ├── detector/
-│   │   └── ddos.go              # Attack detection
-│   ├── blocker/
-│   │   └── ratelimit.go         # Rate limiting & blocking
-│   └── logger/
-│       └── logger.go            # Structured logging
-├── logs/                        # Log files
-├── go.mod                       # Go module file
-└── README.md                    # This file
+ddd/
+.
+├── cmd
+│   └── server
+│       └── main.go
+├── configs
+├── dns-defense-server
+├── go.mod
+├── go.sum
+├── internal
+│   ├── blocker
+│   │   └── ratelimit.go
+│   ├── detector
+│   │   └── ddos.go
+│   ├── dns
+│   │   └── server.go
+│   ├── logger
+│   │   └── logger.go
+│   └── monitor
+│       └── traffic.go
+├── logs
+├── Makefile
+├── output.txt
+├── QUICKSTART.md
+├── README.md
+├── SDLC_WORKFLOW.mermaid
+├── setup.sh
+├── test
+│   └── detector_test.go
+└── TROUBLESHOOTING.md
+
 ```
 
 ## Production Deployment
