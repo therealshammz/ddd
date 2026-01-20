@@ -48,9 +48,15 @@ clean:
 	rm -rf logs/*.log
 
 # Install the binary to system
-install: build-prod
+install:  build-prod
 	@echo "Installing to /usr/local/bin..."
-	sudo cp $(BINARY_NAME) /usr/local/bin/
+	@if [ -w /usr/local/bin ]; then \
+		cp $(BINARY_NAME) /usr/local/bin/; \
+		chmod 755 /usr/local/bin/$(BINARY_NAME); \
+	else \
+		sudo cp $(BINARY_NAME) /usr/local/bin/; \
+		sudo chmod 755 /usr/local/bin/$(BINARY_NAME); \
+	fi
 
 # Format code
 fmt:
