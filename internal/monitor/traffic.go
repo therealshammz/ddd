@@ -145,7 +145,7 @@ func (tm *TrafficMonitor) cleanup() {
 	tm.mu.Lock()
 	defer tm.mu.Unlock()
 
-	cutoff := time.Now().Add(-1 * time.Hour)
+	cutoff := time.Now().Add(-30 * time. Minute)
 	
 	for ip, stats := range tm.stats {
 		if stats.LastRequestTime.Before(cutoff) {
